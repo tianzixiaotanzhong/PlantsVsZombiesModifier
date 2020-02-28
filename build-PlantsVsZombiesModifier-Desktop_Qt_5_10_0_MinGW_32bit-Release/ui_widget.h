@@ -29,6 +29,7 @@ class Ui_Widget
 {
 public:
     QGridLayout *gridLayout_2;
+    PVZ_Damage *widget_3;
     QWidget *widget;
     QGridLayout *gridLayout;
     QSpacerItem *horizontalSpacer_2;
@@ -40,10 +41,9 @@ public:
     QSpacerItem *horizontalSpacer_4;
     QToolButton *sunshine_btn;
     QToolButton *money_btn;
-    QCheckBox *money_lock;
-    QCheckBox *sunshine_lock;
-    PVZ_Damage *widget_3;
     QLabel *label_3;
+    QCheckBox *sunshine_lock;
+    QCheckBox *money_lock;
 
     void setupUi(QWidget *Widget)
     {
@@ -56,6 +56,11 @@ public:
         Widget->setAutoFillBackground(false);
         gridLayout_2 = new QGridLayout(Widget);
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        widget_3 = new PVZ_Damage(Widget);
+        widget_3->setObjectName(QStringLiteral("widget_3"));
+
+        gridLayout_2->addWidget(widget_3, 4, 0, 1, 2);
+
         widget = new QWidget(Widget);
         widget->setObjectName(QStringLiteral("widget"));
         gridLayout = new QGridLayout(widget);
@@ -117,27 +122,22 @@ public:
 
         gridLayout_2->addWidget(widget, 0, 0, 1, 2);
 
-        money_lock = new QCheckBox(Widget);
-        money_lock->setObjectName(QStringLiteral("money_lock"));
-
-        gridLayout_2->addWidget(money_lock, 1, 0, 1, 1);
-
-        sunshine_lock = new QCheckBox(Widget);
-        sunshine_lock->setObjectName(QStringLiteral("sunshine_lock"));
-
-        gridLayout_2->addWidget(sunshine_lock, 1, 1, 1, 1);
-
-        widget_3 = new PVZ_Damage(Widget);
-        widget_3->setObjectName(QStringLiteral("widget_3"));
-
-        gridLayout_2->addWidget(widget_3, 3, 0, 1, 2);
-
         label_3 = new QLabel(Widget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setMaximumSize(QSize(16777215, 60));
         label_3->setTextFormat(Qt::AutoText);
 
-        gridLayout_2->addWidget(label_3, 2, 0, 1, 2);
+        gridLayout_2->addWidget(label_3, 3, 0, 1, 2);
+
+        sunshine_lock = new QCheckBox(Widget);
+        sunshine_lock->setObjectName(QStringLiteral("sunshine_lock"));
+
+        gridLayout_2->addWidget(sunshine_lock, 1, 0, 1, 1);
+
+        money_lock = new QCheckBox(Widget);
+        money_lock->setObjectName(QStringLiteral("money_lock"));
+
+        gridLayout_2->addWidget(money_lock, 1, 1, 1, 1);
 
 
         retranslateUi(Widget);
@@ -158,9 +158,9 @@ public:
         money_btn->setToolTip(QApplication::translate("Widget", "<html><head/><body><p>\351\207\221\345\270\201\347\224\237\346\225\210</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         money_btn->setText(QApplication::translate("Widget", "\351\207\221\351\222\261\347\224\237\346\225\210", nullptr));
-        money_lock->setText(QApplication::translate("Widget", "\351\207\221\345\270\201\345\233\272\345\256\232", nullptr));
-        sunshine_lock->setText(QApplication::translate("Widget", "\351\230\263\345\205\211\345\233\272\345\256\232", nullptr));
         label_3->setText(QApplication::translate("Widget", "\346\244\215\347\211\251\344\274\244\345\256\263\346\217\220\345\215\207:", nullptr));
+        sunshine_lock->setText(QApplication::translate("Widget", "\351\230\263\345\205\211\345\233\272\345\256\232", nullptr));
+        money_lock->setText(QApplication::translate("Widget", "\351\207\221\345\270\201\345\233\272\345\256\232", nullptr));
     } // retranslateUi
 
 };

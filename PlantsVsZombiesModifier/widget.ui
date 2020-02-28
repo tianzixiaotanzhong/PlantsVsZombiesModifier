@@ -21,6 +21,9 @@
    <bool>false</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
+   <item row="4" column="0" colspan="2">
+    <widget class="PVZ_Damage" name="widget_3" native="true"/>
+   </item>
    <item row="0" column="0" colspan="2">
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout">
@@ -147,24 +150,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QCheckBox" name="money_lock">
-     <property name="text">
-      <string>金币固定</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QCheckBox" name="sunshine_lock">
-     <property name="text">
-      <string>阳光固定</string>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="0" colspan="2">
-    <widget class="PVZ_Damage" name="widget_3" native="true"/>
-   </item>
-   <item row="2" column="0" colspan="2">
     <widget class="QLabel" name="label_3">
      <property name="maximumSize">
       <size>
@@ -177,6 +163,20 @@
      </property>
      <property name="textFormat">
       <enum>Qt::AutoText</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QCheckBox" name="sunshine_lock">
+     <property name="text">
+      <string>阳光固定</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QCheckBox" name="money_lock">
+     <property name="text">
+      <string>金币固定</string>
      </property>
     </widget>
    </item>

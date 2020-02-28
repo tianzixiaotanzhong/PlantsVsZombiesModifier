@@ -12,6 +12,22 @@ PlantsVsZomblies::PlantsVsZomblies(QObject * parent)
 
 void PlantsVsZomblies::setSunshine(int sunshine)
 {
+    //找到窗口
+    hWinmine = FindWindowW(NULL, gameName);
+    GetWindowThreadProcessId(hWinmine, &dwPID);	//获取进程标识
+    if (dwPID == 0)
+    {
+        qDebug() << "获取PID失败\n";
+        return;
+    }
+    hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, dwPID);
+    if (hProcess == NULL)
+    {
+        qDebug() << "进程打开失败\n";
+        getLastError = GetLastError();
+        return;
+    }
+
     //基址
     DWORD SunShineBaseAddress = 0x006A9EC0;
     //基址值
@@ -53,6 +69,22 @@ void PlantsVsZomblies::setSunshine(int sunshine)
 
 void PlantsVsZomblies::setMoney(int money)
 {
+    //找到窗口
+    hWinmine = FindWindowW(NULL, gameName);
+    GetWindowThreadProcessId(hWinmine, &dwPID);	//获取进程标识
+    if (dwPID == 0)
+    {
+        qDebug() << "获取PID失败\n";
+        return;
+    }
+    hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, dwPID);
+    if (hProcess == NULL)
+    {
+        qDebug() << "进程打开失败\n";
+        getLastError = GetLastError();
+        return;
+    }
+
     //基址
     DWORD moneyBaseAddress = 0x006A9EC0;
     //基址值
@@ -94,6 +126,22 @@ void PlantsVsZomblies::setMoney(int money)
 
 bool PlantsVsZomblies::improve_damage(DamageAddress dadd, int multiple)
 {
+    qDebug() << "开始修改伤害";
+    //找到窗口
+    hWinmine = FindWindowW(NULL, gameName);
+    GetWindowThreadProcessId(hWinmine, &dwPID);	//获取进程标识
+    if (dwPID == 0)
+    {
+        qDebug() << "获取PID失败\n";
+        return false;
+    }
+    hProcess = OpenProcess(PROCESS_ALL_ACCESS, false, dwPID);
+    if (hProcess == NULL)
+    {
+        qDebug() << "进程打开失败\n";
+        getLastError = GetLastError();
+        return false;
+    }
 
     DWORD damageBaseAdress = dadd;
 
@@ -102,10 +150,10 @@ bool PlantsVsZomblies::improve_damage(DamageAddress dadd, int multiple)
     if(0 == WriteProcessMemory(hProcess, (LPVOID)damageBaseAdress, &damage, sizeof(DWORD), &dwSize))
     {
         qDebug()<<"伤害修改失败";
-        return 1;
+        return false;
     }
     else
-        return 0;
+        return true;
 }
 
 bool PlantsVsZomblies::fandgame()

@@ -15,37 +15,33 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QToolButton>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include <pvz_damage.h>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Widget
 {
 public:
-    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout_2;
+    PVZ_Damage *widget_3;
     QWidget *widget;
     QGridLayout *gridLayout;
     QSpacerItem *horizontalSpacer_2;
     QLabel *label;
     QLineEdit *moneyEdit;
-    QSpacerItem *horizontalSpacer_5;
-    QLineEdit *sunshineEdit;
-    QSpacerItem *horizontalSpacer_3;
     QLabel *label_2;
+    QSpacerItem *horizontalSpacer_3;
+    QLineEdit *sunshineEdit;
     QSpacerItem *horizontalSpacer_4;
-    QWidget *widget_2;
-    QHBoxLayout *horizontalLayout_2;
     QToolButton *sunshine_btn;
     QToolButton *money_btn;
-    QWidget *widget_3;
-    QHBoxLayout *horizontalLayout;
+    QLabel *label_3;
     QCheckBox *sunshine_lock;
     QCheckBox *money_lock;
 
@@ -58,8 +54,13 @@ public:
         icon.addFile(QString::fromUtf8(":/\350\212\261\347\233\206\345\212\250\346\274\253\344\272\272\347\211\251.png"), QSize(), QIcon::Normal, QIcon::Off);
         Widget->setWindowIcon(icon);
         Widget->setAutoFillBackground(false);
-        verticalLayout = new QVBoxLayout(Widget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        gridLayout_2 = new QGridLayout(Widget);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        widget_3 = new PVZ_Damage(Widget);
+        widget_3->setObjectName(QStringLiteral("widget_3"));
+
+        gridLayout_2->addWidget(widget_3, 4, 0, 1, 2);
+
         widget = new QWidget(Widget);
         widget->setObjectName(QStringLiteral("widget"));
         gridLayout = new QGridLayout(widget);
@@ -80,36 +81,25 @@ public:
 
         gridLayout->addWidget(moneyEdit, 1, 3, 1, 1);
 
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QStringLiteral("label_2"));
 
-        gridLayout->addItem(horizontalSpacer_5, 0, 4, 1, 1);
+        gridLayout->addWidget(label_2, 1, 1, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_3, 0, 2, 1, 1);
 
         sunshineEdit = new QLineEdit(widget);
         sunshineEdit->setObjectName(QStringLiteral("sunshineEdit"));
 
         gridLayout->addWidget(sunshineEdit, 0, 3, 1, 1);
 
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_3, 0, 2, 1, 1);
-
-        label_2 = new QLabel(widget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        gridLayout->addWidget(label_2, 1, 1, 1, 1);
-
         horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout->addItem(horizontalSpacer_4, 0, 0, 1, 1);
 
-
-        verticalLayout->addWidget(widget);
-
-        widget_2 = new QWidget(Widget);
-        widget_2->setObjectName(QStringLiteral("widget_2"));
-        horizontalLayout_2 = new QHBoxLayout(widget_2);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        sunshine_btn = new QToolButton(widget_2);
+        sunshine_btn = new QToolButton(widget);
         sunshine_btn->setObjectName(QStringLiteral("sunshine_btn"));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/\351\230\263\345\205\211.jfif"), QSize(), QIcon::Normal, QIcon::Off);
@@ -117,9 +107,9 @@ public:
         sunshine_btn->setIconSize(QSize(40, 40));
         sunshine_btn->setAutoRaise(true);
 
-        horizontalLayout_2->addWidget(sunshine_btn);
+        gridLayout->addWidget(sunshine_btn, 0, 4, 1, 1);
 
-        money_btn = new QToolButton(widget_2);
+        money_btn = new QToolButton(widget);
         money_btn->setObjectName(QStringLiteral("money_btn"));
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/\351\207\221\345\270\201.jpg"), QSize(), QIcon::Normal, QIcon::Off);
@@ -127,27 +117,27 @@ public:
         money_btn->setIconSize(QSize(40, 40));
         money_btn->setAutoRaise(true);
 
-        horizontalLayout_2->addWidget(money_btn);
+        gridLayout->addWidget(money_btn, 1, 4, 1, 1);
 
 
-        verticalLayout->addWidget(widget_2);
+        gridLayout_2->addWidget(widget, 0, 0, 1, 2);
 
-        widget_3 = new QWidget(Widget);
-        widget_3->setObjectName(QStringLiteral("widget_3"));
-        horizontalLayout = new QHBoxLayout(widget_3);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        sunshine_lock = new QCheckBox(widget_3);
+        label_3 = new QLabel(Widget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setMaximumSize(QSize(16777215, 60));
+        label_3->setTextFormat(Qt::AutoText);
+
+        gridLayout_2->addWidget(label_3, 3, 0, 1, 2);
+
+        sunshine_lock = new QCheckBox(Widget);
         sunshine_lock->setObjectName(QStringLiteral("sunshine_lock"));
 
-        horizontalLayout->addWidget(sunshine_lock);
+        gridLayout_2->addWidget(sunshine_lock, 1, 0, 1, 1);
 
-        money_lock = new QCheckBox(widget_3);
+        money_lock = new QCheckBox(Widget);
         money_lock->setObjectName(QStringLiteral("money_lock"));
 
-        horizontalLayout->addWidget(money_lock);
-
-
-        verticalLayout->addWidget(widget_3);
+        gridLayout_2->addWidget(money_lock, 1, 1, 1, 1);
 
 
         retranslateUi(Widget);
@@ -168,6 +158,7 @@ public:
         money_btn->setToolTip(QApplication::translate("Widget", "<html><head/><body><p>\351\207\221\345\270\201\347\224\237\346\225\210</p></body></html>", nullptr));
 #endif // QT_NO_TOOLTIP
         money_btn->setText(QApplication::translate("Widget", "\351\207\221\351\222\261\347\224\237\346\225\210", nullptr));
+        label_3->setText(QApplication::translate("Widget", "\346\244\215\347\211\251\344\274\244\345\256\263\346\217\220\345\215\207:", nullptr));
         sunshine_lock->setText(QApplication::translate("Widget", "\351\230\263\345\205\211\345\233\272\345\256\232", nullptr));
         money_lock->setText(QApplication::translate("Widget", "\351\207\221\345\270\201\345\233\272\345\256\232", nullptr));
     } // retranslateUi

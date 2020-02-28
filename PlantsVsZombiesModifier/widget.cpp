@@ -30,6 +30,7 @@ Widget::Widget(QWidget *parent)
     connect(sl_timer, &QTimer::timeout, [=](){
         if(ui->sunshine_lock->isChecked() == true)
         {
+            qDebug()<<"固定阳光";
             pvz->setSunshine(9999);
         }
     });
@@ -48,6 +49,7 @@ Widget::Widget(QWidget *parent)
             }
             else
             {
+                qDebug()<<"重新初始化";
                 pvz->pvz_init();
             }
         }
@@ -69,7 +71,7 @@ Widget::Widget(QWidget *parent)
         case 10:flag = pvz->improve_damage(butter, multiple);break;
         default:break;
         }
-        if(0 == flag)
+        if(true == flag)
         {
             QMessageBox::information(parent, "提示", "修改成功", QMessageBox::Ok);
         }
